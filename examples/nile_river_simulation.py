@@ -7,7 +7,7 @@ from core.models.reservoir import Reservoir
 from core.models.flow import Flow, Inflow
 from core.models.objective import Objective
 from core.models.power_plant import PowerPlant
-from core.models.irrigation_district import IrrigationDistrict
+from core.models.demand_district import DemandDistrict
 from core.models.catchment import Catchment
 from core.wrappers.transform_action import ReshapeArrayAction
 from datetime import datetime
@@ -42,33 +42,33 @@ def create_nile_river_env() -> WaterManagementSystem:
         reservoir=GERD_reservoir,
     )
     # Sudan
-    DSSennar_irr_system = IrrigationDistrict(
+    DSSennar_irr_system = DemandDistrict(
         "DSSennar_irr",
-        np.loadtxt(data_directory / "irrigation" / "irr_demand_DSSennar.txt"),
+        np.loadtxt(data_directory / "demand" / "irr_demand_DSSennar.txt"),
         Objective.deficit_minimised,
         "sudan_deficit_minimised",
     )
-    Gezira_irr_system = IrrigationDistrict(
+    Gezira_irr_system = DemandDistrict(
         "Gezira_irr",
-        np.loadtxt(data_directory / "irrigation" / "irr_demand_Gezira.txt"),
+        np.loadtxt(data_directory / "demand" / "irr_demand_Gezira.txt"),
         Objective.deficit_minimised,
         "sudan_deficit_minimised",
     )
-    Hassanab_irr_system = IrrigationDistrict(
+    Hassanab_irr_system = DemandDistrict(
         "Hassanab_irr",
-        np.loadtxt(data_directory / "irrigation" / "irr_demand_Hassanab.txt"),
+        np.loadtxt(data_directory / "demand" / "irr_demand_Hassanab.txt"),
         Objective.deficit_minimised,
         "sudan_deficit_minimised",
     )
-    Tamaniat_irr_system = IrrigationDistrict(
+    Tamaniat_irr_system = DemandDistrict(
         "Tamaniat_irr",
-        np.loadtxt(data_directory / "irrigation" / "irr_demand_Tamaniat.txt"),
+        np.loadtxt(data_directory / "demand" / "irr_demand_Tamaniat.txt"),
         Objective.deficit_minimised,
         "sudan_deficit_minimised",
     )
-    USSennar_irr_system = IrrigationDistrict(
+    USSennar_irr_system = DemandDistrict(
         "USSennar_irr",
-        np.loadtxt(data_directory / "irrigation" / "irr_demand_USSennar.txt"),
+        np.loadtxt(data_directory / "demand" / "irr_demand_USSennar.txt"),
         Objective.deficit_minimised,
         "sudan_deficit_minimised",
     )
@@ -97,9 +97,9 @@ def create_nile_river_env() -> WaterManagementSystem:
         storage_to_surface_rel=np.loadtxt(data_directory / "reservoirs" / "store_sur_rel_Sennar.txt"),
     )
     # Egypt
-    Egypt_irr_system = IrrigationDistrict(
+    Egypt_irr_system = DemandDistrict(
         "Egypt_irr",
-        np.loadtxt(data_directory / "irrigation" / "irr_demand_Egypt.txt"),
+        np.loadtxt(data_directory / "demand" / "irr_demand_Egypt.txt"),
         Objective.deficit_minimised,
         "egypt_deficit_minimised",
     )

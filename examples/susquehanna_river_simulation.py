@@ -9,7 +9,7 @@ from core.models.reservoir import Reservoir
 from core.models.flow import Flow, Inflow
 from core.models.objective import Objective
 from core.models.power_plant import PowerPlant
-from core.models.irrigation_district import IrrigationDistrict
+from core.models.demand_district import DemandDistrict
 from core.wrappers.transform_action import ReshapeArrayAction
 
 data_directory = Path(__file__).parents[1] / "examples" / "data" / "susquehanna_river"
@@ -52,28 +52,28 @@ def create_susquehanna_river_env() -> WaterManagementSystem:
         reservoir=Conowingo_reservoir,
     )
 
-    Atomic_system = IrrigationDistrict(
+    Atomic_system = DemandDistrict(
         name="Atomic",
         all_demand=np.loadtxt(data_directory / "demands" / "Atomic.txt"),
         objective_function=Objective.supply_ratio_maximised,
         objective_name="water_supply",
     )
 
-    Baltimore_system = IrrigationDistrict(
+    Baltimore_system = DemandDistrict(
         name="Baltimore",
         all_demand=np.loadtxt(data_directory / "demands" / "Baltimore.txt"),
         objective_function=Objective.supply_ratio_maximised,
         objective_name="water_supply",
     )
 
-    Chester_system = IrrigationDistrict(
+    Chester_system = DemandDistrict(
         name="Chester",
         all_demand=np.loadtxt(data_directory / "demands" / "Chester.txt"),
         objective_function=Objective.supply_ratio_maximised,
         objective_name="water_supply",
     )
 
-    Downstream_system = IrrigationDistrict(
+    Downstream_system = DemandDistrict(
         name="Downstream",
         all_demand=np.loadtxt(data_directory / "demands" / "Downstream.txt"),
         objective_function=Objective.deficit_squared_ratio_minimised,
@@ -97,7 +97,7 @@ def create_susquehanna_river_env() -> WaterManagementSystem:
     Conowingo_outflow = Flow(
         name="conowingo_outflow",
         sources=[Conowingo_reservoir],
-        destinations={Atomic_system: 0.25, Baltimore_system: 0.25, Chester_system: 0.25, Power_plant: 0.25}, 
+        destinations={Atomic_system: 0.25, Baltimore_system: 0.25, Chester_system: 0.25, Power_plant: 0.25},
         max_capacity=float("inf"),
     )
 

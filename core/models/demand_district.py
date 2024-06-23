@@ -1,30 +1,30 @@
 from core.models.facility import Facility
 
 
-class IrrigationDistrict(Facility):
+class DemandDistrict(Facility):
     """
-    Class to represent Irrigation District
+    Class to represent Demand District
 
     Attributes:
     ----------
     name : str
         identifier
     demand : float
-    The list of monthly demand of the irrigation district
+    The list of monthly demand of the demand district
     total_deficit : float
     The total amount of water deficit we have
     list_deficits : list[float]
-    The monthly list of the deficit of the irrigation district
+    The monthly list of the deficit of the demand district
 
 
     Methods:
     ----------
     determine_reward():
-        Calculates the reward (irrigation deficit) given the values of its attributes
+        Calculates the reward (demand deficit) given the values of its attributes
     determine_consumption():
-        Determines how much water is consumed by the irrigation district
+        Determines how much water is consumed by the demand district
     determine_info():
-        Returns info about the irrigation sustem
+        Returns info about the demand sustem
     """
 
     def __init__(self, name: str, all_demand: list[float], objective_function, objective_name: str) -> None:
@@ -38,12 +38,12 @@ class IrrigationDistrict(Facility):
 
     def determine_deficit(self) -> float:
         """
-        Calculates the reward (irrigation deficit) given the values of its attributes
+        Calculates the reward (demand deficit) given the values of its attributes
 
         Returns:
         ----------
         float
-            Water deficit of the irrigation district
+            Water deficit of the demand district
         """
         consumption = self.determine_consumption()
         deficit = self.get_current_demand() - consumption
@@ -65,7 +65,7 @@ class IrrigationDistrict(Facility):
 
     def determine_consumption(self) -> float:
         """
-        Determines how much water is consumed by the irrigation district
+        Determines how much water is consumed by the demand district
 
         Returns:
         ----------
@@ -79,12 +79,12 @@ class IrrigationDistrict(Facility):
 
     def determine_info(self) -> dict:
         """
-        Determines info of irrigation district
+        Determines info of demand district
 
         Returns:
         ----------
         dict
-            Info about irrigation district (name, name, inflow, outflow, demand, timestep, deficit)
+            Info about demand district (name, name, inflow, outflow, demand, timestep, deficit)
         """
         return {
             "name": self.name,

@@ -7,9 +7,9 @@ make_csv = True
 
 
 def nile_river_simulation(nu_of_timesteps=240):
-    # Create power plant, reservoir and irrigation district. Initialise with semi-random parameters.
+    # Create power plant, reservoir and demand district. Initialise with semi-random parameters.
     # Set objective functions to identity for power plant, minimum_water_level for reservoir and water_deficit_minimised
-    # for irrigation district.
+    # for demand district.
 
     water_management_system = create_nile_river_env()
 
