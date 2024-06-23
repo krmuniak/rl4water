@@ -54,8 +54,8 @@ class Flow:
                 source_outflow = source.get_outflow(timestep_after_delay_clipped)
 
                 # Determine if source has custom split policy
-                if source.split_release:
-                    total_source_outflow += source_outflow * source.split_release[destination_index]
+                if source.split_release_ratio:
+                    total_source_outflow += source_outflow * source.split_release_ratio[destination_index]
                 else:
                     total_source_outflow += source_outflow * destination_inflow_ratio
 

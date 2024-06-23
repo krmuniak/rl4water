@@ -126,7 +126,7 @@ class Reservoir(ControlledFacility):
 
         # Split release for different destinations
         if self.should_split_release and total_action != 0:
-            self.split_release = [(action / total_action) for action in actions]
+            self.split_release_ratio = [(action / total_action) for action in actions]
 
         return average_release
 

@@ -21,7 +21,7 @@ class Facility(ABC):
         self.timestep_size: Optional[relativedelta] = None
         self.timestep: int = 0
 
-        self.split_release = None
+        self.split_release_ratio = None
 
     @abstractmethod
     def determine_reward(self) -> float:
@@ -108,7 +108,7 @@ class ControlledFacility(ABC):
         self.timestep: int = 0
 
         self.should_split_release = np.prod(self.action_space.shape) > 1
-        self.split_release = None
+        self.split_release_ratio = None
 
     @abstractmethod
     def determine_reward(self) -> float:
